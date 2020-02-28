@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const initialColor = {
   color: "",
@@ -25,6 +26,20 @@ const ColorList = ({ colors, updateColors }) => {
 
   const deleteColor = color => {
     // make a delete request to delete this color
+    console.log(color);
+    axiosWithAuth(color)
+      .delete(`/api/colors/${color.id}`)
+      .then(res => {
+        console.log('Delete:', res)
+        axiosWithAuth()
+        .get('/api/colors')
+        .then(res => {
+          console.log('Bubbles response:', res)
+          updateColors(res.data)
+        })
+        .catch(err => console.log('Bubbles error:', err));
+      })
+      .catch(err => console.log('Delete error:', err));
   };
 
   return (
