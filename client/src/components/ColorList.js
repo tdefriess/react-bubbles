@@ -22,6 +22,20 @@ const ColorList = ({ colors, updateColors }) => {
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is is saved right now?
+    console.log('Color ID:', colorToEdit)
+    axiosWithAuth()
+      .put(`/api/colors/${colorToEdit.id}`, colorToEdit)
+      .then(res => {
+        console.log('Edit color:', res)
+        axiosWithAuth()
+          .get('/api/colors')
+          .then(res => {
+            console.log('Bubbles response:', res)
+            updateColors(res.data)
+          })
+          .catch(err => console.log('Bubbles error:', err));
+      })
+      .catch(err => console.log('Edit error:', err))
   };
 
   const deleteColor = color => {
@@ -32,12 +46,12 @@ const ColorList = ({ colors, updateColors }) => {
       .then(res => {
         console.log('Delete:', res)
         axiosWithAuth()
-        .get('/api/colors')
-        .then(res => {
-          console.log('Bubbles response:', res)
-          updateColors(res.data)
-        })
-        .catch(err => console.log('Bubbles error:', err));
+          .get('/api/colors')
+          .then(res => {
+            console.log('Bubbles response:', res)
+            updateColors(res.data)
+          })
+          .catch(err => console.log('Bubbles error:', err));
       })
       .catch(err => console.log('Delete error:', err));
   };
