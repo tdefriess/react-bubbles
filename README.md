@@ -27,10 +27,20 @@ In this project you will create a login page and request a token from the server
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] Explain what a token is used for.
+
+A token is a key provided to a user that is used to access content that is locked until the user signs in, and can be stored to keep the user signed into an app.
+
 - [ ] What steps can you take in your web apps to keep your data secure?
+
+You can use encryption to protect data in transit, like usernames or passwords. You can add your API key to its own file that is added to your gitignore file so that it is not uploaded to github. Also, Zeit has a service that will allow you to save API keys or other sensitive data to a secret file that is referred to by it's own identifier.
+
 - [ ] Describe how web servers work.
+
+'Web server' can refer to either the computer that stores the code for a website or the software for a website itself. Users enter the address for a server in the form of a domain name which is used by a DNS to connect the user to the web server that runs the website they wish to see. Once connected, the user and the web server exchange data necessary for the user to use the site, login, etc.
+
 - [ ] Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
 
+Create, Read, Update, and Delete, which with axios are post, get, put, and delete requests, respectively.
 
 ## Project Set Up
 
